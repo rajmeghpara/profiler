@@ -176,6 +176,12 @@ export function getMarkerSelectorsPerThread(threadSelectors: *) {
     MarkerData.filterForMarkerChart
   );
 
+  const getSearchFilteredMarkerChartMarkers: Selector<Marker[]> = createSelector(
+    getMarkerChartMarkers,
+    UrlState.getMarkersSearchString,
+    MarkerData.getSearchFilteredMarkers
+  );
+
   const getMarkerChartTiming: Selector<MarkerTimingRows> = createSelector(
     getMarkerChartMarkers,
     MarkerTiming.getMarkerTiming
@@ -218,6 +224,7 @@ export function getMarkerSelectorsPerThread(threadSelectors: *) {
     getNetworkChartMarkers,
     getIsMarkerChartEmptyInFullRange,
     getMarkerChartMarkers,
+    getSearchFilteredMarkerChartMarkers,
     getMarkerChartTiming,
     getNetworkChartTiming,
     getCommittedRangeFilteredMarkers,
